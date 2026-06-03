@@ -12,7 +12,7 @@ embeddings = HuggingFaceEmbeddings(
     # encode_kwargs={'normalize_embeddings': False}
 )
 
-db = FAISS.load_local("yamatano.db", embeddings, allow_dangerous_deserialization=True)
+db = FAISS.load_local("joseito.db", embeddings, allow_dangerous_deserialization=True)
 
 retriever = db.as_retriever(search_kwargs={"k": 4})
 
@@ -94,7 +94,7 @@ qa = RetrievalQA.from_chain_type(
 
 # -----②ローカルLLMを使ったRAGの実行例---------------------------------------------------------
 
-q = "主人公が勤務している食品メーカーの名前は?"
+q = "主人公がいちばん好きな子の名前は?"
 ans = qa.invoke(q)
 
 print("===== 参照したテキスト =====")
