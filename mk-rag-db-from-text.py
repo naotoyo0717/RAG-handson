@@ -2,7 +2,10 @@
 # -----①パッセージの作成---------------------------------------------------------
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-with open('joseito.txt', 'r', encoding='utf-8') as f:
+# with open('joseito.txt', 'r', encoding='utf-8') as f:
+#     text = f.read()
+
+with open('yamatano.txt', 'r', encoding='utf-8') as f:
     text = f.read()
 
 text_splitter = RecursiveCharacterTextSplitter(
@@ -41,9 +44,13 @@ from langchain_community.vectorstores import FAISS
 
 db = FAISS.from_texts(texts, embeddings)
 
-db.save_local("joseito.db")
+# db.save_local("joseito.db")
 
-db = FAISS.load_local("joseito.db", embeddings, allow_dangerous_deserialization=True)
+db.save_local("yamatano.db")
+
+# db = FAISS.load_local("joseito.db", embeddings, allow_dangerous_deserialization=True)
+
+db = FAISS.load_local("yamatano.db", embeddings, allow_dangerous_deserialization=True)
 
 a = db.similarity_search("私は犬が好き。")
 
