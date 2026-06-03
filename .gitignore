@@ -2,3 +2,5 @@
 venv
 *.txt
 *.log
+
+!requirements.txt
